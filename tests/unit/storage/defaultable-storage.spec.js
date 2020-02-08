@@ -1,4 +1,4 @@
-import DefaultableStorage from '@sicko-storage/storage/defaultable-storage';
+import DefaultableStorage from '@sicko-mode-storage/storage/defaultable-storage';
 
 describe('DefaultableStorage', () => {
   let validStorage;

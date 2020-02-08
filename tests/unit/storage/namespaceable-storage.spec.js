@@ -1,6 +1,6 @@
 import { when } from 'jest-when'
 
-import NamespaceableStorage from '@sicko-storage/storage/namespaceable-storage';
+import NamespaceableStorage from '@sicko-mode-storage/storage/namespaceable-storage';
 
 describe('NamespaceableStorage', () => {
   let validStorage;

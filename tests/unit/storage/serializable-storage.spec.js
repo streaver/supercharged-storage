@@ -1,4 +1,4 @@
-import SerializableStorage from '@sicko-storage/storage/serializable-storage';
+import SerializableStorage from '@sicko-mode-storage/storage/serializable-storage';
 
 describe('SerializableStorage', () => {
   let underlyingStorage;

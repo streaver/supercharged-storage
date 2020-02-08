@@ -1,4 +1,4 @@
-import BaseStorage from '@sicko-storage/storage/base-storage';
+import BaseStorage from '@sicko-mode-storage/storage/base-storage';
 
 class SerializableStorage extends BaseStorage {
   constructor(underlyingStorage, options = {}) {

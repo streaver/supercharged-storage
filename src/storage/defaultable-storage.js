@@ -1,4 +1,4 @@
-import BaseStorage from '@sicko-storage/storage/base-storage';
+import BaseStorage from '@sicko-mode-storage/storage/base-storage';
 
 class DefaultableStorage extends BaseStorage {
   constructor(underlyingStorage, defaultValue) {

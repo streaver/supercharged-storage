@@ -1,7 +1,7 @@
 import { when } from 'jest-when'
 import { advanceBy, advanceTo, clear } from 'jest-date-mock';
 
-import ExpirableStorage from '@sicko-storage/storage/expirable-storage';
+import ExpirableStorage from '@sicko-mode-storage/storage/expirable-storage';
 
 describe('ExpirableStorage', () => {
   let validStorage;

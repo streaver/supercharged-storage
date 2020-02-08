@@ -1,6 +1,6 @@
-import BaseStorage from '@sicko-storage/storage/base-storage';
+import BaseStorage from '@sicko-mode-storage/storage/base-storage';
 
-class SickoStorage {
+class SickoModeStorage {
   static build(options = {}) {
     return this.prototype.storages.reduce((storage, storageClass) => {
       return storageClass.build(storage, options);
@@ -16,6 +16,6 @@ class SickoStorage {
   }
 };
 
-SickoStorage.prototype.storages = [BaseStorage];
+SickoModeStorage.prototype.storages = [BaseStorage];
 
-export default SickoStorage;
+export default SickoModeStorage;
