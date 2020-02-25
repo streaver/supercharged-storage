@@ -1,6 +1,10 @@
-import BaseStorage from '@sicko-mode-storage/storage/base-storage';
+import BaseStorage from '@supercharged-storage/storage/base-storage';
+import DefaultableStorage from '@supercharged-storage/storage/defaultable-storage';
+import NamespaceableStorage from '@supercharged-storage/storage/namespaceable-storage';
+import SerializableStorage from '@supercharged-storage/storage/serializable-storage';
+import ExpirableStorage from '@supercharged-storage/storage/expirable-storage';
 
-class SickoModeStorage {
+class SuperchargedStorage {
   static build(options = {}) {
     return this.prototype.storages.reduce((storage, storageClass) => {
       return storageClass.build(storage, options);
@@ -16,6 +20,13 @@ class SickoModeStorage {
   }
 };
 
-SickoModeStorage.prototype.storages = [BaseStorage];
+SuperchargedStorage.prototype.storages = [BaseStorage];
 
-export default SickoModeStorage;
+export {
+  DefaultableStorage,
+  NamespaceableStorage,
+  SerializableStorage,
+  ExpirableStorage,
+};
+
+export default SuperchargedStorage;

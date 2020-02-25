@@ -1,5 +1,5 @@
 {
-  "name": "sicko-mode-storage",
+  "name": "supercharged-storage",
   "version": "1.0.0",
   "description": "A supercharged storage for the web that let's you achieve unimaginable things with your preferred underlying storage medium",
   "main": "dist/index.js",
@@ -17,7 +17,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/streaver/sicko-mode-storage.git"
+    "url": "git+https://github.com/streaver/supercharged-storage.git"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
@@ -35,7 +35,7 @@
     "prettier": "1.19.1"
   },
   "bugs": {
-    "url": "https://github.com/streaver/sicko-mode-storage/issues"
+    "url": "https://github.com/streaver/supercharged-storage/issues"
   },
   "keywords": [
     "supercharged",
@@ -46,5 +46,5 @@
   ],
   "author": "",
   "license": "MIT",
-  "homepage": "https://github.com/streaver/sicko-mode-storage#readme"
+  "homepage": "https://github.com/streaver/supercharged-storage#readme"
 }

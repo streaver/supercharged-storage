@@ -1,53 +1,53 @@
-import SickoModeStorage from '@sicko-mode-storage/index';
-import BaseStorage from '@sicko-mode-storage/storage/base-storage';
-import DefaultableStorage from '@sicko-mode-storage/storage/defaultable-storage';
-import NamespaceableStorage from '@sicko-mode-storage/storage/namespaceable-storage';
-import SerializableStorage from '@sicko-mode-storage/storage/serializable-storage';
-import ExpirableStorage from '@sicko-mode-storage/storage/expirable-storage';
+import SuperchargedStorage from '@supercharged-storage/index';
+import BaseStorage from '@supercharged-storage/storage/base-storage';
+import DefaultableStorage from '@supercharged-storage/storage/defaultable-storage';
+import NamespaceableStorage from '@supercharged-storage/storage/namespaceable-storage';
+import SerializableStorage from '@supercharged-storage/storage/serializable-storage';
+import ExpirableStorage from '@supercharged-storage/storage/expirable-storage';
 
-jest.mock('@sicko-mode-storage/storage/base-storage');
-jest.mock('@sicko-mode-storage/storage/defaultable-storage');
-jest.mock('@sicko-mode-storage/storage/namespaceable-storage');
-jest.mock('@sicko-mode-storage/storage/serializable-storage');
-jest.mock('@sicko-mode-storage/storage/expirable-storage');
+jest.mock('@supercharged-storage/storage/base-storage');
+jest.mock('@supercharged-storage/storage/defaultable-storage');
+jest.mock('@supercharged-storage/storage/namespaceable-storage');
+jest.mock('@supercharged-storage/storage/serializable-storage');
+jest.mock('@supercharged-storage/storage/expirable-storage');
 
-describe('SickoModeStorage', () => {
+describe('SuperchargedStorage', () => {
   describe('.storages', () => {
     it('only contains one element', () => {
-      expect(SickoModeStorage.prototype.storages.length).toEqual(1);
+      expect(SuperchargedStorage.prototype.storages.length).toEqual(1);
     });
 
     it('contains only the BaseStorage', () => {
-      expect(SickoModeStorage.prototype.storages[0]).toEqual(BaseStorage);
+      expect(SuperchargedStorage.prototype.storages[0]).toEqual(BaseStorage);
     });
   });
 
   describe('.use', () => {
     it('pushes elements to the storages array', () => {
-      SickoModeStorage.use(DefaultableStorage);
+      SuperchargedStorage.use(DefaultableStorage);
 
-      expect(SickoModeStorage.prototype.storages.length).toEqual(2);
-      expect(SickoModeStorage.prototype.storages[0]).toEqual(BaseStorage);
-      expect(SickoModeStorage.prototype.storages[1]).toEqual(DefaultableStorage);
+      expect(SuperchargedStorage.prototype.storages.length).toEqual(2);
+      expect(SuperchargedStorage.prototype.storages[0]).toEqual(BaseStorage);
+      expect(SuperchargedStorage.prototype.storages[1]).toEqual(DefaultableStorage);
     });
 
     it('does not push if already present', () => {
-      SickoModeStorage.use(DefaultableStorage);
-      SickoModeStorage.use(DefaultableStorage);
+      SuperchargedStorage.use(DefaultableStorage);
+      SuperchargedStorage.use(DefaultableStorage);
 
-      expect(SickoModeStorage.prototype.storages.length).toEqual(2);
-      expect(SickoModeStorage.prototype.storages[0]).toEqual(BaseStorage);
-      expect(SickoModeStorage.prototype.storages[1]).toEqual(DefaultableStorage);
+      expect(SuperchargedStorage.prototype.storages.length).toEqual(2);
+      expect(SuperchargedStorage.prototype.storages[0]).toEqual(BaseStorage);
+      expect(SuperchargedStorage.prototype.storages[1]).toEqual(DefaultableStorage);
     });
 
     it('keeps the storages array sorted by storage position', () => {
-      SickoModeStorage.use(ExpirableStorage);
-      SickoModeStorage.use(DefaultableStorage);
+      SuperchargedStorage.use(ExpirableStorage);
+      SuperchargedStorage.use(DefaultableStorage);
 
-      expect(SickoModeStorage.prototype.storages.length).toEqual(3);
-      expect(SickoModeStorage.prototype.storages[0]).toEqual(BaseStorage);
-      expect(SickoModeStorage.prototype.storages[1]).toEqual(DefaultableStorage);
-      expect(SickoModeStorage.prototype.storages[2]).toEqual(ExpirableStorage);
+      expect(SuperchargedStorage.prototype.storages.length).toEqual(3);
+      expect(SuperchargedStorage.prototype.storages[0]).toEqual(BaseStorage);
+      expect(SuperchargedStorage.prototype.storages[1]).toEqual(DefaultableStorage);
+      expect(SuperchargedStorage.prototype.storages[2]).toEqual(ExpirableStorage);
     });
   });
 
@@ -55,7 +55,7 @@ describe('SickoModeStorage', () => {
     let underlyingStorage;
 
     beforeEach(() => {
-      SickoModeStorage.prototype.storages = [BaseStorage]
+      SuperchargedStorage.prototype.storages = [BaseStorage]
 
       underlyingStorage = { getItem: jest.fn(), setItem: jest.fn(), removeItem: jest.fn(), clear: jest.fn() };
 
@@ -70,10 +70,10 @@ describe('SickoModeStorage', () => {
 
     describe('when using all the storages', () => {
       it('chains the storages altogether', () => {
-        SickoModeStorage.use(ExpirableStorage);
-        SickoModeStorage.use(DefaultableStorage);
-        SickoModeStorage.use(NamespaceableStorage);
-        SickoModeStorage.use(SerializableStorage);
+        SuperchargedStorage.use(ExpirableStorage);
+        SuperchargedStorage.use(DefaultableStorage);
+        SuperchargedStorage.use(NamespaceableStorage);
+        SuperchargedStorage.use(SerializableStorage);
 
         const options = {
           storage: window.localStorage,
@@ -82,7 +82,7 @@ describe('SickoModeStorage', () => {
           namespace: 'test',
         }
 
-        const storage = SickoModeStorage.build(options);
+        const storage = SuperchargedStorage.build(options);
 
         expect(BaseStorage.build).toHaveBeenCalledWith(null, options);
         expect(DefaultableStorage.build).toHaveBeenCalledWith({ underlyingStorage, type: 'ExpirableStorage' }, options);
@@ -96,8 +96,8 @@ describe('SickoModeStorage', () => {
 
     describe('when using some of the storages', () => {
       it('chains the storages altogether', () => {
-        SickoModeStorage.use(ExpirableStorage);
-        SickoModeStorage.use(NamespaceableStorage);
+        SuperchargedStorage.use(ExpirableStorage);
+        SuperchargedStorage.use(NamespaceableStorage);
 
         const options = {
           storage: window.localStorage,
@@ -106,7 +106,7 @@ describe('SickoModeStorage', () => {
           namespace: 'test',
         }
 
-        const storage = SickoModeStorage.build(options);
+        const storage = SuperchargedStorage.build(options);
 
         expect(BaseStorage.build).toHaveBeenCalledWith(null, options);
         expect(ExpirableStorage.build).toHaveBeenCalledWith({ underlyingStorage, type: 'BaseStorage' }, options);

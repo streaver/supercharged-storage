@@ -13,7 +13,7 @@ module.exports = {
     ["module-resolver", {
       "root": ["./src"],
       "alias": {
-        "@sicko-mode-storage": "./src",
+        "@supercharged-storage": "./src",
       }
     }]
   ]

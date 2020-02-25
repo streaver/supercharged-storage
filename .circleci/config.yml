@@ -4,7 +4,7 @@ jobs:
   node-12: &test
     docker:
       - image: node:12
-    working_directory: ~/sicko-mode-storage
+    working_directory: ~/supercharged-storage
     steps:
       - checkout
       - restore_cache: &restore_cache
@@ -59,7 +59,7 @@ jobs:
 
 workflows:
   version: 2
-  'sicko-mode-storage':
+  'supercharged-storage':
     jobs:
       - node-12
       - node-10

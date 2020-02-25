@@ -1,4 +1,4 @@
-import BaseStorage from '@sicko-mode-storage/storage/base-storage';
+import BaseStorage from '@supercharged-storage/storage/base-storage';
 
 export const DEFAULT_NAMESPACE = 'vp';
 
